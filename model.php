@@ -1,4 +1,5 @@
 <?php
+
 header('Content-Type: text/html; charset=utf-8');
 function connectMySQL($server,$user,$password,$db) {
 	$connection = new mysqli($server, $user, $password, $db);
@@ -11,21 +12,22 @@ function selectEntries($connection) {
 	return $result;
 }
 function searchEntries($connection,$searchQuery) {
-  $query = "SELECT procedimientos.id,procedimientos.procedimientoExamen,procedimientos.servicio,procedimientos.ubicacion,procedimientos.tomaHora,procedimientos.observaciones,states.state FROM procedimientos,states WHERE procedimientoExamen LIKE '%".$searchQuery."%' AND procedimientos.state = states.id";
+  $query = "SELECT procedimientos.id,procedimientos.procedimientoExamen,procedimientos.servicio,procedimientos.ubicacion,procedimientos.tomaHora,procedimientos.observaciones,states.state,codigo.codigo FROM procedimientos,states WHERE procedimientoExamen LIKE '%".$searchQuery."%' AND procedimientos.state = states.id";
 	$result = $connection->query($query);
 	return $result;
 }
-function addEntry($procedimientoExamen,$servicio,$ubicacion,$tomaHora,$observaciones,$connection,$state) {
-  $query = "INSERT INTO procedimientos (id, procedimientoExamen, servicio, ubicacion, tomaHora, observaciones,state) VALUES (NULL, '".$procedimientoExamen."', '".$servicio."', '".$ubicacion."', '".$tomaHora."', '".$observaciones."', '".$state."');";
+
+function addEntry($procedimientoExamen,$servicio,$ubicacion,$tomaHora,$observaciones,$connection,$state,$codigo) {
+  $query = "INSERT INTO procedimientos (id, procedimientoExamen, servicio, ubicacion, tomaHora, observaciones,state,codigo) VALUES (NULL, '".$procedimientoExamen."', '".$servicio."', '".$ubicacion."', '".$tomaHora."', '".$observaciones."', '".$state."', '".$codigo."');";
 	$result = $connection->query($query);
 }
 function viewEntry ($id,$connection) {
-  $query = "SELECT procedimientos.id,procedimientos.procedimientoExamen,procedimientos.servicio,procedimientos.ubicacion,procedimientos.tomaHora,procedimientos.observaciones,states.state FROM procedimientos,states WHERE procedimientos.state = states.id AND procedimientos.id = " . $id;
+  $query = "SELECT procedimientos.id,procedimientos.procedimientoExamen,procedimientos.servicio,procedimientos.ubicacion,procedimientos.tomaHora,procedimientos.observaciones,states.state,procedimientos.codigo FROM procedimientos,states WHERE procedimientos.state = states.id AND procedimientos.id = " . $id;
 	$result = $connection->query($query);
 	return $result;
 }
-function editEntry($id,$procedimientoExamen,$servicio,$ubicacion,$tomaHora,$observaciones,$connection,$state) {
-  $query = 'UPDATE procedimientos SET procedimientoExamen = "'.$procedimientoExamen.'", servicio = "'.$servicio.'", ubicacion = "'.$ubicacion.'", tomaHora = "'.$tomaHora.'", observaciones = "'.$observaciones.'", state = '.$state.' WHERE id = '.$id.'';
+function editEntry($id,$procedimientoExamen,$servicio,$ubicacion,$tomaHora,$observaciones,$connection,$state,$codigo) {
+  $query = 'UPDATE procedimientos SET procedimientoExamen = "'.$procedimientoExamen.'", servicio = "'.$servicio.'", ubicacion = "'.$ubicacion.'", tomaHora = "'.$tomaHora.'", observaciones = "'.$observaciones.'", state = "'.$state.'", codigo= "'.$codigo.'" WHERE id = '.$id.'';
 	$result = $connection->query($query);
 }
 function addComment($proc_id,$comment,$connection,$user_id) {

@@ -19,6 +19,8 @@
     <?php echo $entry["observaciones"]; ?>
     <h2>Estado</h2>
     <?php echo $entry["state"]; ?>
+    <h2>Código</h2>
+    <?php echo $entry["codigo"]; ?>
     <h2>Comentarios</h2>
     <ul>
     <?php if ($comments == false) {

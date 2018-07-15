@@ -47,7 +47,8 @@ function commentsToArray() {
 
 if (isset($_GET["action"]) || isset($_GET["action2"]) || isset($_POST["action"])) {
   if (isset($_GET["action"]) && ($_GET["action"] == "addEntry")) {
-    addEntry($_GET["procedimientoExamen"],$_GET["servicio"],$_GET["ubicacion"],$_GET["tomaHora"],$_GET["observaciones"],$connection,$_GET["state"]);
+    addEntry($_GET["procedimientoExamen"],$_GET["servicio"],$_GET["ubicacion"],$_GET["tomaHora"],$_GET["observaciones"],$connection,$_GET["state"],$_GET["codigo"]);
+
   }
   if (isset($_POST["action"]) && $_POST["action"] == "addUser") {
     addUser($_POST["user"],$_POST["name"],crypt($_POST["password"],"hcuch"),$_POST["type"],$connection);

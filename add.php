@@ -24,6 +24,7 @@
         <option value="2">No Confirmado</option>
         <option value="3">No se Realiza en el Hospital</option>
         <option value="4">No se Realiza para Todos los Diagnósticos</option>
+      <label for="">Código: </label> <input type="text" name="codigo" value=""><br>
       </select><br>
       <input type="hidden" name="added" value="true">
       <input type="hidden" name="action" value="addEntry">

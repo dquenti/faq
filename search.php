@@ -53,6 +53,7 @@ header('Content-Type: text/html, charset=utf-8');
             <th>Toma de Hora</th>
             <th>observaciones</th>
             <th>Estado</th>
+            <th>Código</th>
           </thead>';
           foreach ($data as $key) {
             echo '
@@ -75,6 +76,9 @@ header('Content-Type: text/html, charset=utf-8');
               <td>
                 '.$key["state"].'
               </td>
+              <td>
+                '.$key["codigo"].'
+              </td>
             </tr>
             ';
           }
@@ -84,7 +88,7 @@ header('Content-Type: text/html, charset=utf-8');
 
       }
       else {
-        echo 'ingrese búsqueda';
+        echo 'Ingrese búsqueda';
       }
       ?>
 

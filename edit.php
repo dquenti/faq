@@ -17,7 +17,8 @@
       <label for="">Servicio: </label> <input type="text" name="servicio" value="<?php echo $entry["servicio"]; ?>"><br>
       <label for="">Ubicación: </label> <input type="text" name="ubicacion" value="<?php echo $entry["ubicacion"]; ?>"><br>
       <label for="">Toma de Hora: </label> <input type="text" name="tomaHora" value="<?php echo $entry["tomaHora"]; ?>"><br>
-      <label for="">observaciones: </label> <input type="text" name="observaciones" value="<?php echo $entry["observaciones"]; ?>"><br>
+      <label for="">Observaciones: </label> <input type="text" name="observaciones" value="<?php echo $entry["observaciones"]; ?>"><br>
+      <label for="">Código: </label> <input type="text" name="codigo" value="<?php echo $entry["codigo"]; ?>"><br>
       <label for="">Estado: </label>
       <select class="" name="state">
         <option value="1">Correcto</option>
